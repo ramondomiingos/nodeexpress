@@ -1,15 +1,20 @@
 'use strict';
 
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
 const router = express.Router();
 
-const route  = router.get('/', (req,res,next) =>{
-    res.status(200).send({
-        title:"Node Store API",
-        version: "0.0.1"
-    });
-});
-app.use('/',route);
+//Carregar as Rotas
+const indexRoutes = require('../routes/index');
+const productRoute = require('../routes/products');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.use('/', indexRoutes);
+app.use('/product', productRoute);
 
 module.exports = app;
