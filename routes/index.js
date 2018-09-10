@@ -9,4 +9,4 @@ const route  =router.get('/', (req,res,next) =>{
         version: "0.0.2"
     });
 });
-module.exports = router;
+module.exports = route;
